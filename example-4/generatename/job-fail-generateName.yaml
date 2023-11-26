@@ -1,14 +1,14 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: example-4-generatename-
+  generateName: example-4-fail-generatename-
   namespace: default
 spec:
   template:
     spec:
       containers:
-      - name: pi
-        image: perl:5.34.0
-        command: ["perl", "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+      - name: main
+        image: busybox
+        command: ["ls", "unvalid path"]
       restartPolicy: Never
   backoffLimit: 2

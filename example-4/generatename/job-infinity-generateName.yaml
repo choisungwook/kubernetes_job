@@ -1,15 +1,14 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: example-4-fail-generatename-
+  generateName: example-4-infinity-generatename-
   namespace: default
 spec:
-  ttlSecondsAfterFinished: 30
   template:
     spec:
       containers:
-      - name: main
+      - name: busybox
         image: busybox
-        command: ["ls", "unvalid path"]
+        command: ["sleep", "infinity"]
       restartPolicy: Never
   backoffLimit: 2

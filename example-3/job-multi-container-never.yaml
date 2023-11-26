@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: example-3-multi-container-never
+  namespace: default
+spec:
+  template:
+    spec:
+      containers:
+      - name: success
+        image: busybox
+        command: ["sleep", "infinity"]
+      - name: fail
+        image: busybox
+        command: ["ls", "unvalid path"]
+      restartPolicy: Never
+  backoffLimit: 2

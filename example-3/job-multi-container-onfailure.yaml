@@ -1,14 +1,17 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: example-3-multi-container
+  name: example-3-multi-container-onfailure
   namespace: default
 spec:
   template:
     spec:
       containers:
-      - name: main
+      - name: success
+        image: busybox
+        command: ["sleep", "infinity"]
+      - name: fail
         image: busybox
         command: ["ls", "unvalid path"]
-      restartPolicy: Never
+      restartPolicy: OnFailure
   backoffLimit: 2

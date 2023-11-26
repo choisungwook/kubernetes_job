@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: example-5-infinity-daedline
+  namespace: default
+spec:
+  # ttlSecondsAfterFinished: 60
+  activeDeadlineSeconds: 20
+  template:
+    spec:
+      containers:
+      - name: busybox
+        image: busybox
+        command: ["sleep"]
+        args: ["infinity"]
+      restartPolicy: Never
+  backoffLimit: 2

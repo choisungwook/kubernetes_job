@@ -10,6 +10,7 @@ spec:
       containers:
       - name: busybox
         image: busybox
-        command: ["sleep", "infinity"]
+        command: ["sleep"]
+        args: ["infinity"]
       restartPolicy: Never
   backoffLimit: 2

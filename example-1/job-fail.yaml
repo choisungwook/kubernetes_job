@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: example-1-fail-job
+spec:
+  completions: 1
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: main
+        image: docker.io/library/bash:5
+        command: ["bash"]
+        args:
+        - -c
+        - echo "Hello world!" && sleep 3 && exit 42
+  backoffLimit: 6

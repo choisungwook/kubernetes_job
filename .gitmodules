@@ -1,0 +1,3 @@
+[submodule "argocd"]
+	path = argocd
+	url = https://github.com/choisungwook/argocd-practice.git

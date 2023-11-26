@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: example-7-cronjob-fail
+  namespace: default
+spec:
+  # every minute
+  schedule: "* * * * *"
+  timeZone: "Asia/Seoul"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 2
+  jobTemplate:
+    spec:
+      backoffLimit: 2
+      template:
+        spec:
+          containers:
+          - name: main
+            image: docker.io/library/bash:5
+            command: ["bash"]
+            args:
+            - -c
+            - echo "Hello world!" && sleep 3 && exit 42
+          restartPolicy: Never

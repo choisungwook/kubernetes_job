@@ -7,4 +7,5 @@
 * [multi container](./example-3/)
 * [generatename job](./example-4/)
 * [deadline job](./example-5/)
+* [cronjob](./example-7-cronjob/)
 * [argocd with kubernets job](./example-6-argocd/)

@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: example-3-multi-container
+  namespace: default
+spec:
+  template:
+    spec:
+      containers:
+      - name: main
+        image: busybox
+        command: ["ls", "unvalid path"]
+      restartPolicy: Never
+  backoffLimit: 2
